@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GreatFrontEnd Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CDN allows you to use Tailwind classes immediately in your HTML without any installation steps. 
+      If you're not using Tailwind, you may delete the <script> -->
+    <!-- Get started on Tailwind: https://tailwindcss.com/docs/installation/play-cdn -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <link rel="stylesheet" href="css/mansory_items.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/favicon.ico" sizes="any" />>
+
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  </head>
+  <body>
+`   <!-- this section is repeated i need to make an split css style for it -->
+    <header class="container">
+      <img class="lg-logo"src="img/Logo.png" alt="image of the logo of the website wich is a white letter p with black background">
+      <img class="sm-logo"src="img/Logo - woodmark.png" alt="image of the logo of the website wich is a white letter p with black background">
+      <div class="input-wrapper">
+        <input id="search-input" type="text" placeholder="Search image Eg. Landscape">
+        <img id="search-logo"class="search-logo" src="img/search-2-line.png" alt="search logo">
+        <img id="close-logo" class="close-logo"  src="img/close-line.png" alt="close logo x">
+      </div>
+    </header>
+    
+    <nav id="topics-container"></nav>
+
+    <section id="topic_image" class= "topic-image none"></section>
+
+    <main id="images-container"></main>
+
+    <section id="not-found">
+      <img src="./img/search-2-line-blue.png">
+      <p>No photos found</p>
+    </section>
+
+    <section id="load-more">
+      <img src="./img/loader-4-line.png">
+      <p>Loading more...</p>
+    </section>
+
+    <footer>
+      <section>
+        <p>©  Pinsplash, </p>
+        <p>Inc. All rights reserved.</p>
+      </section>
+      <section>
+        <a href="#"><img src="./img/youtube-line.png"></a>
+        <a href="#"><img src="./img/instagram-line.png"></a>
+        <a href="#"><img src="./img/facebook-box-line.png"></a>
+        <a href="#"><img src="./img/github-line.png"></a>
+        <a href="#"><img src="./img/twitter-x-line.png"></a>
+      </section>
+    </footer>
+
+    <!-- Attribute this challenge to yourself! -->
+    <div class="credits" data-gfe-screenshot-exclude="true">
+      A challenge by
+      <a
+        href="https://www.greatfrontend.com/projects?ref=challenges"
+        target="_blank"
+        >GreatFrontEnd Projects</a
+      >. Built by
+      <a
+        href="https://www.greatfrontend.com/projects/u/username"
+        target="_blank"
+        >Hisham Mahgoub</a
+      >.
+    </div>
+    <script src="js/index.js" type="module"></script>
+  </body>
+</html>

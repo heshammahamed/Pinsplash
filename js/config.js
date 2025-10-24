@@ -1,0 +1,4 @@
+const ACCESS_KEY="6zmgFnKEKyujrC32NG7OIlZgYkdSqMge_HvrAPSk5Ow"
+const SECRET_KEY="wHE7E-SF7SVY61Sb6lWTMZYrdgE-HFFBcMGMOdBV_CQ"
+
+export default {ACCESS_KEY}
