@@ -94,3 +94,13 @@ export const observer = new IntersectionObserver((entries) => {
 } , {
     threshold : 1.0
 })
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("warningPopup");
+  popup.classList.add("show");
+
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 10000); 
+});

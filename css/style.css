@@ -365,3 +365,24 @@ footer > :last-child {
 .none {
   display: none;
 }
+
+.warning-popup {
+  position: fixed;
+  background: #ffcc00;
+  color: #222;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  z-index: 9999;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.warning-popup.show {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
