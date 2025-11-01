@@ -4,11 +4,19 @@ import { generate_topic } from "./fetch/get_topics.js";
 import { generate_photos } from "./fetch/fetch_images.js";
 import { setLayout , Mansory } from "./mansory/mansory.js";
 import { loadMore } from "./elements.js";
-import { fetchFilter } from "./data.js"
+import { fetchFilter , DISCOVER } from "./data.js"
 
 
-generate_topic();
-generate_photos();
+initilize()
+
+function initilize () {
+    const params = new URLSearchParams(window.location.search)
+    const selected_topic_id = params.get("topicid") || DISCOVER
+    console.log(selected_topic_id)
+    generate_topic(selected_topic_id);
+    generate_photos();
+}
+
 
 // for main page 
 export let main_object_mansory = new Mansory(document.getElementById('images-container'))
@@ -18,16 +26,34 @@ const search_logo = document.getElementById("search-logo");
 const close_logo = document.getElementById("close-logo");
 const navcontainer = document.getElementById("topics-container") 
 
+
 function fetch_topic_pic(id) {
+    const params = new URLSearchParams(window.location.search)
+
+    if (id === DISCOVER) {
+        params.delete("topicid")
+        const newUrl = `${window.location.pathname}`;
+        window.history.replaceState({}, '', newUrl);
+    }else {
+        params.set("topicid" , id)
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        window.history.replaceState({}, '', newUrl)
+    }
+
     fetchFilter.tobicId = id;
     fetchFilter.first_time = true;
     generate_photos();
 }
 
+/*
+    it can be selection of already selected item so i will not do any thing
+*/
 function handleSelection (e) {
     const section = e.target.closest("section")
 
     if (!section) return;
+
+    if (section.classList.contains("selected_topic")) return
 
     navcontainer.querySelector('.selected_topic')?.classList.remove('selected_topic')
 

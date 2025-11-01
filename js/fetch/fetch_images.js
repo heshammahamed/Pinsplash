@@ -1,5 +1,5 @@
 import config from "../config.js"
-import { BASE_URL , fetchFilter, topics} from "../data.js"
+import { BASE_URL , fetchFilter, topics , DISCOVER} from "../data.js"
 import { setLayout } from "../mansory/mansory.js";
 import { observer , main_object_mansory } from "../index.js";
 import { loadMore } from "../elements.js";
@@ -17,25 +17,25 @@ function handleSelection (e) {
 imageContainer.addEventListener("click" ,handleSelection)
 
 export async function generate_photos() {
-  const data = await fetch_imgs(fetchFilter.tobicId);
+  const data = await fetch_imgs();
 
   if (fetchFilter.first_time) {
     imageContainer.innerHTML=""
   } 
 
-  if (fetchFilter.tobicId) {
-    let topic = topics.find(e => e.id== fetchFilter.tobicId)
-    topic_container.innerHTML=`
-        <div class="hold_img" id="hold_img">
-            <div class="text">
-              <h1>${topic.title}</h1>
-              <p>${topic.description}</p>
-            </div>
-      </div>
-    `
-    document.getElementById("hold_img").style.backgroundImage=`url(${topic.cover_photo.urls.full})`
-    topic_container.classList.remove('none')
-  }
+  // if (fetchFilter.tobicId) {
+  //   let topic = topics.find(e => e.id== fetchFilter.tobicId)
+  //   topic_container.innerHTML=`
+  //       <div class="hold_img" id="hold_img">
+  //           <div class="text">
+  //             <h1>${topic.title}</h1>
+  //             <p>${topic.description}</p>
+  //           </div>
+  //     </div>
+  //   `
+  //   document.getElementById("hold_img").style.backgroundImage=`url(${topic.cover_photo.urls.full})`
+  //   topic_container.classList.remove('none')
+  // }
 
   const itemsNumberBeforeFetch = imageContainer.children.length
 
@@ -75,14 +75,18 @@ export async function generate_photos() {
   observer.observe(loadMore)
 }
 
-async function fetch_imgs (topicid) {
+async function fetch_imgs () {
+  // could create a spescial functioin that create filters object
+
+    const params = new URLSearchParams(window.location.search)
+
+    const filters = {
+      topic : params.get("topicid") || DISCOVER
+    }
+
     let url = BASE_URL;
 
-    if (topicid) {
-        url+=`/photos/random/?count=20&topics=${topicid}`
-    }else {
-        url += "/photos/random/?count=20"
-    }
+    url+=`/photos/random/?count=20${filters.topic ? `&topics=${filters.topic}` : ''}`
 
     try {
         const res = await fetch(url , {

@@ -1,6 +1,9 @@
 let MAIN_PAGE_PHOTOS = []
 export const BASE_URL = "https://api.unsplash.com";
 
+/* this is the default topic id if the user did not choose an topic */
+export const DISCOVER = 0 
+
 /*
     i think to make a class for this
 */
