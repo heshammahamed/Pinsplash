@@ -46,7 +46,7 @@ function fetch_topic_pic(id) {
 }
 
 /*
-    it can be selection of already selected item so i will not do any thing
+    it can be selection of already selected item so i will not do any thin
 */
 function handleSelection (e) {
     const section = e.target.closest("section")
